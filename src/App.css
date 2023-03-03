@@ -25,6 +25,11 @@
   padding: 0;
 }
 
+.connect-wallet {
+  /* padding: 10vh; */
+  margin: 10px; 
+}
+
 /**
  * Declare default values here.
  */

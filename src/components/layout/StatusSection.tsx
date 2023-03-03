@@ -26,10 +26,10 @@ export const StatusSection = (props: StatusSectionProps) => {
       <Timer />
       <Numbers onClickNumber={(number) => props.onClickNumber(number)} />
       <div className="status__actions">
-        <Action action='undo' onClickAction={props.onClickUndo} />
-        <Action action='erase' onClickAction={props.onClickErase} />
+        {/* <Action action='undo' onClickAction={props.onClickUndo} /> */}
+        {/* <Action action='erase' onClickAction={props.onClickErase} /> */}
 
-        <Action action='submit' onClickAction={props.onClickSubmit} />
+        {/* <Action action='submit' onClickAction={props.onClickSubmit} /> */}
         {/* <Action action='hint' onClickAction={props.onClickHint} /> */}
         {/* <Mode mode='mistakes' onClickMode={props.onClickMistakesMode} /> */}
         {/* <Mode mode='fast' onClickMode={props.onClickFastMode} /> */}

@@ -2,8 +2,7 @@ const provider = new ethers.providers.Web3Provider(window.ethereum);
 let address, contract, isConnected = false;
 let walletConnectBtn = document.querySelector('.connect-wallet');
 
-walletConnectBtn.addEventListener('click', getAccounts);
-// contractInit();
+// walletConnectBtn.addEventListener('click', getAccounts);
 const ABI = [
 	{
 		"anonymous": false,
@@ -125,7 +124,7 @@ async function viewAccounts(){
     }
 }
 
-async function getAccounts(){
+export async function getAccounts(){
     let accounts = await provider.send('eth_requestAccounts', []);
     if(accounts.length){
         isConnected = true;

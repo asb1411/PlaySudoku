@@ -7,7 +7,9 @@ import { Footer } from './components/layout/Footer';
 import { getUniqueSudoku } from './solver/UniqueSudoku';
 import { useSudokuContext } from './context/SudokuContext';
 import { stringify } from 'querystring';
+import './App.css';
 const script = require('./script')
+
 /**
  * Game is the main React component.
  */
@@ -238,7 +240,9 @@ export const Game: React.FC<{}> = () => {
 
   }, []);
   async function onClickSubmit() {
-    setLoading(true)
+    console.log("loading");
+    setLoading(true);
+    setOverlay(true);
     console.log(Number(gameArray[0]),Number(gameArray[10]));
     if(await script.verifyWin(0, 0, Number(gameArray[0]) , 1, 1, Number(gameArray[10]))){
       setWon(true);
@@ -277,9 +281,11 @@ export const Game: React.FC<{}> = () => {
             onClickFastMode={onClickFastMode}
             onClickSubmit={onClickSubmit}
           />
-          <button onClick={onClickSubmit}>
+          <button className="connect-wallet" onClick={onClickSubmit}>
             Submit
           </button>
+
+        <button className="connect-wallet" onClick={script.getAccounts}>Connect Wallet</button>
         </div>
         <Footer />
       </div>
@@ -289,10 +295,13 @@ export const Game: React.FC<{}> = () => {
                       }
            onClick={onClickOverlay}
       >{
-        loading ? "loading" : ""
+        loading ? 
+        <h2 className="overlay__text">
+          <span className="overlay__textspan1">Loading!!!</span> 
+        </h2> : ""
       }
-        {
-        won ? 
+        {!loading && (
+        (won) ? 
         <h2 className="overlay__text">
           You <span className="overlay__textspan1">solved</span> <span className="overlay__textspan2">it!</span>
         </h2>
@@ -302,7 +311,7 @@ export const Game: React.FC<{}> = () => {
         
         <h2 className="overlay__text">
         Please <span className="overlay__textspan1">try</span> <span className="overlay__textspan2"> again</span>
-      </h2>}
+      </h2>)}
       </div>
     </>
   );
